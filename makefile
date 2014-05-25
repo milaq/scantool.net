@@ -14,7 +14,7 @@ else
 endif
 endif
 
-DEFINES += -DTERMIOS
+DEFINES += -DTERMIOS -DIGNORE_CLONES
 
 ifdef MINGDIR
    ifdef STATICLINK

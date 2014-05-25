@@ -282,20 +282,18 @@ int Reset_get_reply_to_detect_protocol(char *response)
 
 int Reset_handle_clone()
 {
+#ifndef IGNORE_CLONES
    int bt = alert("Your device does not appear to be a genuine ElmScan 5.",
                   "Due to their poor quality ELM327 clones are no longer supported",
                   "Continue At Your Own Risk ?", "CONTINUE", "QUIT", 0, 0);
    
-    if( bt == 2 )
-    {
-   is_not_genuine_scan_tool = TRUE;
-   
-   return RESET_CLOSE_DIALOG;
-    }
-    else
-    {
-        return RESET_START_ECU_TIMER;
-    }
+   if( bt == 2 )
+   {
+      is_not_genuine_scan_tool = TRUE;
+      return RESET_CLOSE_DIALOG;
+   }
+#endif
+   return RESET_START_ECU_TIMER;
 }
 
 

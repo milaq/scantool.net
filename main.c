@@ -23,7 +23,7 @@ void write_log(const char *log_string)
    logfile = fopen(log_file_name, "a");
    if (logfile == NULL)
       fatal_error("Could not open log file for writing!");
-   fprintf(logfile, log_string);
+   fprintf(logfile, "%s", log_string);
    fclose(logfile);
 }
 

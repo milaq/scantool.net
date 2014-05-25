@@ -2,17 +2,19 @@ CC = gcc
 
 ifdef DEBUGMODE
    CFLAGS = -g -Wall
-   AL_LIBS = -lalld
+   AL_LIBS = `allegro-config --libs --static`
    DEFINES = -DDEBUG
 else
 ifdef RELEASE
    CFLAGS = -Wall -O3 -fexpensive-optimizations -s
-   AL_LIBS = -lalleg
+   AL_LIBS = `allegro-config --libs --static`
 else
    CFLAGS = -O -Wall
-   AL_LIBS = -lalleg
+   AL_LIBS = `allegro-config --libs --static`
 endif
 endif
+
+DEFINES += -DTERMIOS
 
 ifdef MINGDIR
    ifdef STATICLINK
@@ -26,7 +28,7 @@ ifdef MINGDIR
    OBJ = scantool.res listports.o get_port_names.o
    EXT = .exe
 else
-   LIBS = -ldzcom $(AL_LIBS)
+   LIBS = $(AL_LIBS)
    EXT = .exe
 endif
 
@@ -40,7 +42,7 @@ ifdef DEFINES
 endif
 
 OBJ += main.o main_menu.o serial.o options.o sensors.o trouble_code_reader.o custom_gui.o error_handlers.o about.o reset.o
-BIN = ScanTool.exe
+BIN = ScanTool
 
 ifdef MINGDIR
 endif

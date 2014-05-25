@@ -37,7 +37,7 @@ ifdef DEFINES
 endif
 
 OBJ += main.o main_menu.o serial.o options.o sensors.o trouble_code_reader.o custom_gui.o error_handlers.o about.o reset.o
-BIN = ScanTool
+BIN = scantool
 
 ifdef MINGDIR
 endif

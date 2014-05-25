@@ -32,11 +32,6 @@ else
    EXT = .exe
 endif
 
-
-ifndef NOWERROR
-   CFLAGS += -Werror
-endif
-
 ifdef DEFINES
    CFLAGS += $(DEFINES)
 endif
